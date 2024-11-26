@@ -236,6 +236,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: HengelBeginner
       objectReference: {fileID: 0}
+    - target: {fileID: 3790029862372416819, guid: 50b00b8de840ac14c9c44dddda74794b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ae437d5fb2e0fd447b9127c0c55ebe95, type: 2}
+    - target: {fileID: 4460225504872962493, guid: 50b00b8de840ac14c9c44dddda74794b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ae437d5fb2e0fd447b9127c0c55ebe95, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
