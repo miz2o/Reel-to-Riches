@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class FishInfo: MonoBehaviour
+using TMPro;
+public class CashHandler : MonoBehaviour
 {
-    public int Index;
-    public string Name;
-    public string Description;
-    public float Strength;
-    public int worth;
+
+    public int cash;
+    public TMP_Text Cashdisplay;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +19,6 @@ public class FishInfo: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Cashdisplay.text = cash.ToString() + "$";
     }
 }

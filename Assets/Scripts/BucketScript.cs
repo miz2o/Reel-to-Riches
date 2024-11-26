@@ -5,6 +5,7 @@ public class BucketScript : MonoBehaviour
 {
     public string fishTag;
     public ParticleSystem feedbackParticles;
+    public GameObject cashHandlerParent;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -42,8 +43,19 @@ public class BucketScript : MonoBehaviour
         yield return new WaitForEndOfFrame();
 
         // After waiting, destroy the fish object
+
+
         if (fish != null)
         {
+
+            if(fish.GetComponent<FishInfo>() != null)
+            {
+
+            }
+
+
+
+
             fish.SetActive(false);
 
         }
