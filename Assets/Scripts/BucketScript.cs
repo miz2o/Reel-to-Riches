@@ -48,9 +48,9 @@ public class BucketScript : MonoBehaviour
         if (fish != null)
         {
 
-            if(fish.GetComponent<FishInfo>() != null)
+            if(fish.GetComponent<FishInfo>() != null && cashHandlerParent.GetComponent<CashHandler>() != null)
             {
-
+                cashHandlerParent.GetComponent<CashHandler>().cash = fish.GetComponent<FishInfo>().worth;
             }
 
 
