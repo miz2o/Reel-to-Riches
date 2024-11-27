@@ -64,7 +64,7 @@ Material:
     - _RippleSlimness: 8
     - _RippleSpeed: 4
     - _Scale: 0
-    - _WaveScale: 5
+    - _WaveScale: 20
     - _WaveSpeed: 0.05
     m_Colors:
     - _BaseColor: {r: 0.31764707, g: 0.6627451, b: 0.945098, a: 0}
