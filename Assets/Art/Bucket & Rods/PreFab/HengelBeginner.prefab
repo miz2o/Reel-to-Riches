@@ -45,7 +45,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 50b00b8de840ac14c9c44dddda74794b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.029999971
+      value: 0.772
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 50b00b8de840ac14c9c44dddda74794b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -87,6 +87,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HengelBeginner
       objectReference: {fileID: 0}
+    - target: {fileID: 3790029862372416819, guid: 50b00b8de840ac14c9c44dddda74794b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8acb49e7e63e3f5409289505ae2f4030, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -106,6 +110,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -3196511607817033700, guid: 50b00b8de840ac14c9c44dddda74794b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4686160009213353401}
+    - targetCorrespondingSourceObject: {fileID: -801062240296790737, guid: 50b00b8de840ac14c9c44dddda74794b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 447880007838802573}
   m_SourcePrefab: {fileID: 100100000, guid: 50b00b8de840ac14c9c44dddda74794b, type: 3}
 --- !u!1 &1728570792396678966 stripped
 GameObject:
@@ -135,7 +142,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -311,28 +318,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Root: {fileID: 7271188097407353578}
   m_UpdateRate: 60
-  m_Damping: 0.1
+  m_Damping: 0.091
   m_DampingDistrib:
     serializedVersion: 2
     m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_Elasticity: 0.066
+  m_Elasticity: 0.026
   m_ElasticityDistrib:
     serializedVersion: 2
     m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_Stiffness: 0.854
+  m_Stiffness: 0.949
   m_StiffnessDistrib:
     serializedVersion: 2
     m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_Inert: 0.123472475
+  m_Inert: 0
   m_InertDistrib:
     serializedVersion: 2
     m_Curve: []
@@ -363,6 +370,70 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9210995002181015693, guid: 50b00b8de840ac14c9c44dddda74794b, type: 3}
   m_PrefabInstance: {fileID: 1962571269247752807}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8061014562814021448 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -801062240296790737, guid: 50b00b8de840ac14c9c44dddda74794b, type: 3}
+  m_PrefabInstance: {fileID: 1962571269247752807}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &447880007838802573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8061014562814021448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ac8d30c6a0d9642a11e5be4c440740, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Root: {fileID: 9091894301585829622}
+  m_UpdateRate: 60
+  m_Damping: 0.1
+  m_DampingDistrib:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_Elasticity: 0.215
+  m_ElasticityDistrib:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_Stiffness: 0.1
+  m_StiffnessDistrib:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_Inert: 0
+  m_InertDistrib:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_Radius: 0
+  m_RadiusDistrib:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_EndLength: 0
+  m_EndOffset: {x: 0, y: 0, z: 0}
+  m_Gravity: {x: 0, y: 0, z: 0}
+  m_Force: {x: 0, y: 0, z: 0}
+  m_Colliders: []
+  m_Exclusions: []
+  m_FreezeAxis: 0
+  m_DistantDisable: 0
+  m_ReferenceObject: {fileID: 0}
+  m_DistanceToObject: 20
 --- !u!4 &9091894301585829622 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7282480686199321745, guid: 50b00b8de840ac14c9c44dddda74794b, type: 3}

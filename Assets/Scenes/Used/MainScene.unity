@@ -6306,7 +6306,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2069066850949086604, guid: 291a71f36f08d2442a5061317e9f6c84, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.029999971
+      value: 0.772
       objectReference: {fileID: 0}
     - target: {fileID: 2069066850949086604, guid: 291a71f36f08d2442a5061317e9f6c84, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6344,6 +6344,10 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3433027418488751956, guid: 291a71f36f08d2442a5061317e9f6c84, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8acb49e7e63e3f5409289505ae2f4030, type: 2}
     - target: {fileID: 4686160009213353401, guid: 291a71f36f08d2442a5061317e9f6c84, type: 3}
       propertyPath: m_Inert
       value: 0
@@ -7562,7 +7566,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_Elasticity: 0.85
+  m_Elasticity: 0.215
   m_ElasticityDistrib:
     serializedVersion: 2
     m_Curve: []
