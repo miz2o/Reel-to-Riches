@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class RodHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
     public bool throwing;
-    public bool cast;
-        public GameObject rod;
+    public bool iscast;
+    public GameObject rod;
     public GameObject throwtopoint;
     public GameObject player;
-    public float ThrowIncrease;
+    public int ThrowIncrease;
     public Vector3 targetpos;
+    private bool isWaiting;
+    public GameObject bobber;
+
     void Start()
     {
- 
+
     }
 
-    // Update is called once per frame
     void Update()
     {
         float xRotation = rod.transform.eulerAngles.x;
@@ -27,20 +28,59 @@ public class RodHandler : MonoBehaviour
             xRotation -= 360;
         }
 
-      
-        if (xRotation <= -50 & throwing == false)
+        // Check rotation condition and ensure throwing is false
+        if (xRotation <= -50 && !throwing)
         {
             print("StartThrow");
-                throwing = true;
-            cast = false;
-            throwtopoint.transform.position = player.transform.position;
-            throwtopoint.transform.eulerAngles = player.transform.eulerAngles;
+            iscast = true;
 
-            throwtopoint.transform.position.x += 0.5f;
+            // Initialize target position if ThrowIncrease is 0
+            if (ThrowIncrease == 0)
+            {
+                targetpos = player.transform.position;
+                throwtopoint.transform.eulerAngles = player.transform.eulerAngles;
+            }
+
+            // Increment ThrowIncrease using coroutine
+            if (ThrowIncrease < 50 && !isWaiting)
+            {
+                StartCoroutine(IncrementThrowWithDelay());
+            }
+
+            print("ThrowIncrease: " + ThrowIncrease.ToString());
+
+            throwtopoint.transform.position = targetpos;
         }
-        else if (throwing == true && xRotation <= -10)
+        else if (xRotation >= -10 && iscast)
         {
+            // Additional logic for "casting" state
             print("Casting");
+            bobber.transform.position = targetpos;
+
+            StartCoroutine(WaitForFish());
         }
+    }
+
+    IEnumerator IncrementThrowWithDelay()
+    {
+        isWaiting = true; // Set waiting flag
+        yield return new WaitForSeconds(0.1f); // Wait for a short delay
+
+        // Update ThrowIncrease and target position
+        targetpos.x += 0.1f;
+        ThrowIncrease += 1;
+
+        // Allow throwing only when ThrowIncrease is complete
+        if (ThrowIncrease >= 50)
+        {
+            throwing = true;
+        }
+
+        isWaiting = false; // Reset waiting flag
+    }
+
+    IEnumerator WaitForFish()
+    {
+        yield return new WaitForSeconds(0.1f);
     }
 }
