@@ -56,8 +56,8 @@ Material:
     m_Floats:
     - _FoamAmount: 0.4
     - _FoamCutoff: 1
-    - _FoamScale: 300
-    - _FoamSpeed: 0.01
+    - _FoamScale: 5000
+    - _FoamSpeed: 0.0005
     - _QueueControl: 0
     - _QueueOffset: 0
     - _RippleDensity: 50
