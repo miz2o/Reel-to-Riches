@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VRTemplate;
 using UnityEngine;
 
 public class RodHandler : MonoBehaviour
@@ -23,6 +24,7 @@ public class RodHandler : MonoBehaviour
     public GameObject bobber;
     public GameObject dynamicparent;
     public GameObject playercamera;
+    public GameObject reeler;
 
     [Space]
     [Header("Editable Values")]
@@ -36,7 +38,8 @@ public class RodHandler : MonoBehaviour
 
     void Start()
     {
-        // Initialize variables if needed
+        OnKnobValueChanged(reeler.GetComponent<XRKnob>().value);
+
     }
 
     void Update()
@@ -141,8 +144,10 @@ public class RodHandler : MonoBehaviour
         escapeSFX.Play();
     }
 
-    void ReelRequest()
+
+    public void OnKnobValueChanged(float value)
     {
+        Debug.Log($"Knob value changed: {value}");
         print("ReelRequest called"); // Debugging
         if (fishtocatch)
         {
@@ -151,6 +156,18 @@ public class RodHandler : MonoBehaviour
             {
                 isreeling = true;
                 reelSFX.Play();
+
+                print("startescape");
+                print("tryescape");
+                Vector3 forwardIncrement = playercamera.transform.forward * 0.1f; // Move 0.1 units forward
+                forwardIncrement.y = 0; // Ensure y stays at 0
+                throwtopoint.transform.position -= forwardIncrement;
+
+
+
+
+
+
             }
         }
     }
@@ -159,13 +176,14 @@ public class RodHandler : MonoBehaviour
     {
         isWaiting3 = true; // Set waiting flag for escape
         print("startescape");
-        yield return new WaitForSeconds(1f); // Increased delay for testing
-
+        yield return new WaitForSeconds(0.1f); 
         print("tryescape");
         Vector3 forwardIncrement = playercamera.transform.forward * 0.1f; // Move 0.1 units forward
         forwardIncrement.y = 0; // Ensure y stays at 0
-        throwtopoint.transform.position -= forwardIncrement;
+      ////  throwtopoint.transform.position += forwardIncrement;
 
         isWaiting3 = false; // Reset waiting flag
     }
+
+
 }
