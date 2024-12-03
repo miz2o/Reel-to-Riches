@@ -182,7 +182,7 @@ public class RodHandler : MonoBehaviour
         }
         IEnumerator ResetReeling()
         {
-            yield return new WaitForSeconds(0.5f); // Adjust the delay as needed
+            yield return new WaitForSeconds(0.03f); // Adjust the delay as needed
             isreeling = false;
             Debug.Log("Reeling reset and ready for next update.");
         }
@@ -195,7 +195,7 @@ public class RodHandler : MonoBehaviour
             print("tryescape");
             Vector3 forwardIncrement = playercamera.transform.forward * 0.1f; // Move 0.1 units forward
             forwardIncrement.y = 0; // Ensure y stays at 0
-                                    ////  throwtopoint.transform.position += forwardIncrement;
+            throwtopoint.transform.position += forwardIncrement;
 
             isWaiting3 = false; // Reset waiting flag
         }
