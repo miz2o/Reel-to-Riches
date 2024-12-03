@@ -2,23 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 public class UI : MonoBehaviour
 {
     public GameObject menu;
     public GameObject options;
     public GameObject canvas;
     public static bool menuON;
+    public AudioSource MusicSource;
+    public Slider slider;
 
     // Start is called before the first frame update
     void Start()
     {
         menuON = true;
+        MusicSource.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    public void Volume()
+    {
+        MusicSource.volume = slider.value;
     }
     public void Play()
     {

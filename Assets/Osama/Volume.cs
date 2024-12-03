@@ -19,6 +19,6 @@ public class Volume : MonoBehaviour
     }
     public void ChangeVolume(float newVolume)
     {
-        AudioListener.volume = newVolume;
+        
     }
 }
