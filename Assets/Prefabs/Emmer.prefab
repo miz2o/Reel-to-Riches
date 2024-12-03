@@ -94,6 +94,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4938095755617958528, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
   m_PrefabInstance: {fileID: 4360754724613504024}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &8647791703140943514 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4938095755617958530, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
+  m_PrefabInstance: {fileID: 4360754724613504024}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8626913769404161304
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -388,6 +393,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c00e2262783c45647988ffc14408edbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishTag: 
-  feedbackParticles: {fileID: 0}
+  fishTag: Fish
+  feedbackParticles: {fileID: 8647791703140943514}
   cashHandlerParent: {fileID: 0}

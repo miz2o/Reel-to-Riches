@@ -15,6 +15,7 @@ public class RodHandler : MonoBehaviour
     public bool rodinwater;
     public bool isreeling;
     public bool fishtocatch;
+    public float lastKnobValue;
 
     [Space]
     [Header("GameObjects")]
@@ -38,152 +39,166 @@ public class RodHandler : MonoBehaviour
 
     void Start()
     {
-        OnKnobValueChanged(reeler.GetComponent<XRKnob>().value);
 
     }
 
     void Update()
     {
-        float xRotation = rod.transform.eulerAngles.x;
 
-        if (xRotation > 180)
+        XRKnob knob = reeler.GetComponent<XRKnob>();
+        if (knob != null)
         {
-            xRotation -= 360;
+            float currentValue = knob.value;
+
+            // Detect value change
+            if (!Mathf.Approximately(currentValue, lastKnobValue))
+            {
+                lastKnobValue = currentValue;
+                OnKnobValueChanged(currentValue); // Trigger method manually
+            }
+
+
+
+            float xRotation = rod.transform.eulerAngles.x;
+
+            if (xRotation > 180)
+            {
+                xRotation -= 360;
+            }
+
+            if (!rodinwater)
+            {
+                // Check rotation condition and ensure throwing is false
+                if (xRotation <= -60 && !lockthrow)
+                {
+                    StartThrow();
+                }
+                else if (xRotation >= -10 && isstarted)
+                {
+                    ThrowRod();
+                }
+            }
+            else
+            {
+                bobber.transform.position = throwtopoint.transform.position;
+                if (fishtocatch && !isWaiting3) // Trigger escape when fish is present and not already escaping
+                {
+                    StartCoroutine(EscapeDelay());
+                }
+            }
+        }
+    }
+
+        private void StartThrow()
+        {
+            isstarted = true;
+
+            // Initialize target position if ThrowIncrease is 0
+            if (throwIncrease == 0)
+            {
+                Vector3 frontPosition = playercamera.transform.position + playercamera.transform.forward * 0.1f;
+                throwtopoint.transform.position = new Vector3(frontPosition.x, 0, frontPosition.z);
+            }
+
+            // Increment ThrowIncrease using coroutine
+            if (throwIncrease < 50 && !isWaiting)
+            {
+                StartCoroutine(IncrementThrowWithDelay());
+            }
         }
 
-        if (!rodinwater)
+        private void ThrowRod()
         {
-            // Check rotation condition and ensure throwing is false
-            if (xRotation <= -60 && !lockthrow)
+            // Additional logic for "casting" state
+            if (dynamicparent.GetComponent<DynamicBone>() != null)
             {
-                StartThrow();
+                dynamicparent.GetComponent<DynamicBone>().enabled = false;
             }
-            else if (xRotation >= -10 && isstarted)
-            {
-                ThrowRod();
-            }
-        }
-        else
-        {
             bobber.transform.position = throwtopoint.transform.position;
-            if (fishtocatch && !isWaiting3) // Trigger escape when fish is present and not already escaping
+            rodinwater = true;
+
+            if (!isWaiting2 && !fishtocatch)
             {
-                StartCoroutine(EscapeDelay());
+                StartCoroutine(WaitForFish());
             }
         }
-    }
 
-    private void StartThrow()
-    {
-        isstarted = true;
-
-        // Initialize target position if ThrowIncrease is 0
-        if (throwIncrease == 0)
+        IEnumerator IncrementThrowWithDelay()
         {
-            Vector3 frontPosition = playercamera.transform.position + playercamera.transform.forward * 0.1f;
-            throwtopoint.transform.position = new Vector3(frontPosition.x, 0, frontPosition.z);
-        }
+            isWaiting = true; // Set waiting flag
+            yield return new WaitForSeconds(0.1f); // Wait for a short delay
 
-        // Increment ThrowIncrease using coroutine
-        if (throwIncrease < 50 && !isWaiting)
-        {
-            StartCoroutine(IncrementThrowWithDelay());
-        }
-    }
+            Vector3 forwardIncrement = playercamera.transform.forward * 0.1f; // Move 0.1 units forward
+            forwardIncrement.y = 0; // Ensure y stays at 0
+            throwtopoint.transform.position += forwardIncrement; // Add the forward increment to the current position
 
-    private void ThrowRod()
-    {
-        // Additional logic for "casting" state
-        if (dynamicparent.GetComponent<DynamicBone>() != null)
-        {
-            dynamicparent.GetComponent<DynamicBone>().enabled = false;
-        }
-        bobber.transform.position = throwtopoint.transform.position;
-        rodinwater = true;
+            Vector3 position = throwtopoint.transform.position;
+            position.y = 0;
+            throwtopoint.transform.position = position;
 
-        if (!isWaiting2 && !fishtocatch)
-        {
-            StartCoroutine(WaitForFish());
-        }
-    }
+            throwtopoint.transform.rotation = playercamera.transform.rotation;
 
-    IEnumerator IncrementThrowWithDelay()
-    {
-        isWaiting = true; // Set waiting flag
-        yield return new WaitForSeconds(0.1f); // Wait for a short delay
+            throwIncrease += 1;
 
-        Vector3 forwardIncrement = playercamera.transform.forward * 0.1f; // Move 0.1 units forward
-        forwardIncrement.y = 0; // Ensure y stays at 0
-        throwtopoint.transform.position += forwardIncrement; // Add the forward increment to the current position
-
-        Vector3 position = throwtopoint.transform.position;
-        position.y = 0;
-        throwtopoint.transform.position = position;
-
-        throwtopoint.transform.rotation = playercamera.transform.rotation;
-
-        throwIncrease += 1;
-
-        if (throwIncrease >= 50)
-        {
-            lockthrow = true;
-        }
-
-        isWaiting = false; // Reset waiting flag
-    }
-
-    IEnumerator WaitForFish()
-    {
-        isWaiting2 = true;
-        float waitTime = UnityEngine.Random.Range(catchWait.x, catchWait.y);
-        yield return new WaitForSeconds(waitTime);
-
-        print("StartCatchingFish");
-        fishtocatch = true;
-        isWaiting2 = false;
-        escapeSFX.Play();
-    }
-
-
-    public void OnKnobValueChanged(float value)
-    {
-        Debug.Log($"Knob value changed: {value}");
-        print("ReelRequest called"); // Debugging
-        if (fishtocatch)
-        {
-            print("Fishtocatch is true");
-            if (!isreeling)
+            if (throwIncrease >= 50)
             {
-                isreeling = true;
-                reelSFX.Play();
+                lockthrow = true;
+            }
 
-                print("startescape");
-                print("tryescape");
-                Vector3 forwardIncrement = playercamera.transform.forward * 0.1f; // Move 0.1 units forward
-                forwardIncrement.y = 0; // Ensure y stays at 0
-                throwtopoint.transform.position -= forwardIncrement;
+            isWaiting = false; // Reset waiting flag
+        }
+
+        IEnumerator WaitForFish()
+        {
+            isWaiting2 = true;
+            float waitTime = UnityEngine.Random.Range(catchWait.x, catchWait.y);
+            yield return new WaitForSeconds(waitTime);
+
+            print("StartCatchingFish");
+            fishtocatch = true;
+            isWaiting2 = false;
+            escapeSFX.Play();
+        }
 
 
+        public void OnKnobValueChanged(float value)
+        {
+            Debug.Log($"OnKnobValueChanged called with value: {value}");
+            if (fishtocatch)
+            {
+                print("Fish is to catch!");
+                if (!isreeling)
+                {
+                    isreeling = true;
+                    reelSFX.Play();
+                    print("Reeling started!");
 
-
-
-
+                    Vector3 forwardIncrement = playercamera.transform.forward * 0.1f;
+                    forwardIncrement.y = 0;
+                    throwtopoint.transform.position -= forwardIncrement;
+                    StartCoroutine(ResetReeling());
+                }
             }
         }
+        IEnumerator ResetReeling()
+        {
+            yield return new WaitForSeconds(0.5f); // Adjust the delay as needed
+            isreeling = false;
+            Debug.Log("Reeling reset and ready for next update.");
+        }
+
+        IEnumerator EscapeDelay()
+        {
+            isWaiting3 = true; // Set waiting flag for escape
+            print("startescape");
+            yield return new WaitForSeconds(0.1f);
+            print("tryescape");
+            Vector3 forwardIncrement = playercamera.transform.forward * 0.1f; // Move 0.1 units forward
+            forwardIncrement.y = 0; // Ensure y stays at 0
+                                    ////  throwtopoint.transform.position += forwardIncrement;
+
+            isWaiting3 = false; // Reset waiting flag
+        }
+
+
     }
-
-    IEnumerator EscapeDelay()
-    {
-        isWaiting3 = true; // Set waiting flag for escape
-        print("startescape");
-        yield return new WaitForSeconds(0.1f); 
-        print("tryescape");
-        Vector3 forwardIncrement = playercamera.transform.forward * 0.1f; // Move 0.1 units forward
-        forwardIncrement.y = 0; // Ensure y stays at 0
-      ////  throwtopoint.transform.position += forwardIncrement;
-
-        isWaiting3 = false; // Reset waiting flag
-    }
-
-
-}
