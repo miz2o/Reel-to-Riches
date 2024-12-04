@@ -16,6 +16,7 @@ public class RodHandler : MonoBehaviour
     public bool isreeling;
     public bool fishtocatch;
     public float lastKnobValue;
+    public GameObject currentFish;
 
     [Space]
     [Header("GameObjects")]
@@ -31,11 +32,25 @@ public class RodHandler : MonoBehaviour
     [Header("Editable Values")]
     public int throwrotation;
     public Vector2 catchWait;
+    public float minimumReel;
+    public float distanceDecrease;
 
     [Space]
     [Header("Effects")]
     public AudioSource reelSFX;
     public AudioSource escapeSFX;
+
+    [Space]
+    [Header("Fish and their rarities")] // easier fish should go first
+    public List<GameObject> fishPrefabs;
+    public List<int> fishRaritys;
+
+
+
+    [Space]
+    [Header("Values from fish")]
+    public float escapeTimer;
+    public float distanceIncrease;
 
     void Start()
     {
@@ -44,6 +59,7 @@ public class RodHandler : MonoBehaviour
 
     void Update()
     {
+       
 
         XRKnob knob = reeler.GetComponent<XRKnob>();
         if (knob != null)
@@ -53,8 +69,12 @@ public class RodHandler : MonoBehaviour
             // Detect value change
             if (!Mathf.Approximately(currentValue, lastKnobValue))
             {
+                if (lastKnobValue - currentValue >= minimumReel)
+                {
+                    OnKnobValueChanged(currentValue);
+                }
                 lastKnobValue = currentValue;
-                OnKnobValueChanged(currentValue); // Trigger method manually
+         
             }
 
 
@@ -69,7 +89,7 @@ public class RodHandler : MonoBehaviour
             if (!rodinwater)
             {
                 // Check rotation condition and ensure throwing is false
-                if (xRotation <= -60 && !lockthrow)
+                if (xRotation <= throwrotation && !lockthrow)
                 {
                     StartThrow();
                 }
@@ -150,6 +170,7 @@ public class RodHandler : MonoBehaviour
 
         IEnumerator WaitForFish()
         {
+            PickFish();
             isWaiting2 = true;
             float waitTime = UnityEngine.Random.Range(catchWait.x, catchWait.y);
             yield return new WaitForSeconds(waitTime);
@@ -173,7 +194,7 @@ public class RodHandler : MonoBehaviour
                     reelSFX.Play();
                     print("Reeling started!");
 
-                    Vector3 forwardIncrement = playercamera.transform.forward * 0.1f;
+                    Vector3 forwardIncrement = playercamera.transform.forward * distanceDecrease;
                     forwardIncrement.y = 0;
                     throwtopoint.transform.position -= forwardIncrement;
                     StartCoroutine(ResetReeling());
@@ -190,15 +211,34 @@ public class RodHandler : MonoBehaviour
         IEnumerator EscapeDelay()
         {
             isWaiting3 = true; // Set waiting flag for escape
-            print("startescape");
-            yield return new WaitForSeconds(0.1f);
-            print("tryescape");
-            Vector3 forwardIncrement = playercamera.transform.forward * 0.1f; // Move 0.1 units forward
+          
+            yield return new WaitForSeconds(escapeTimer);
+            Vector3 forwardIncrement = playercamera.transform.forward * distanceIncrease; // Move forward
             forwardIncrement.y = 0; // Ensure y stays at 0
             throwtopoint.transform.position += forwardIncrement;
 
             isWaiting3 = false; // Reset waiting flag
         }
+    public void PickFish()
+    {
+        int index = 0;
+        foreach (int rarity in fishRaritys)
+        {
+            int generatednumber = Random.Range(0, 100);
+            if (rarity <= generatednumber)
+            {
+                Debug.Log($"Chosen index: {index}, Rarity: {rarity}");
+                currentFish = Instantiate(fishPrefabs[index], throwtopoint.transform);
+                currentFish.transform.localPosition = Vector3.zero;
 
 
+                return;
+            }
+            index++;
+        }
+        print("no fish chosen");
+        currentFish = Instantiate(fishPrefabs[0], throwtopoint.transform);
+        currentFish.transform.localPosition = Vector3.zero;
     }
+
+}

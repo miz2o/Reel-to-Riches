@@ -43,7 +43,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1755871927820073051}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0bb83e3cfa27c6d4487384ed695c76bd, type: 3}
   m_Name: 
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_MinAngle: -180
   m_AngleIncrement: 0
   m_PositionTrackedRadius: 0.1
-  m_TwistSensitivity: 0.1
+  m_TwistSensitivity: 10
   m_OnValueChange:
     m_PersistentCalls:
       m_Calls: []
@@ -456,7 +456,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -739,43 +739,43 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 50b00b8de840ac14c9c44dddda74794b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.8470225
+      value: 138.009
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 50b00b8de840ac14c9c44dddda74794b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.736
+      value: 4.0369997
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 50b00b8de840ac14c9c44dddda74794b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.180339
+      value: 3.764
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 50b00b8de840ac14c9c44dddda74794b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.49177074
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 50b00b8de840ac14c9c44dddda74794b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.14334749
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 50b00b8de840ac14c9c44dddda74794b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.85487616
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 50b00b8de840ac14c9c44dddda74794b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.08246117
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 50b00b8de840ac14c9c44dddda74794b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -16.378
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 50b00b8de840ac14c9c44dddda74794b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 121.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 50b00b8de840ac14c9c44dddda74794b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -9.841
       objectReference: {fileID: 0}
     - target: {fileID: -4071033278759618193, guid: 50b00b8de840ac14c9c44dddda74794b, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1152,6 +1152,7 @@ MonoBehaviour:
   rodinwater: 0
   isreeling: 0
   fishtocatch: 0
+  lastKnobValue: 0
   rod: {fileID: 3910753662976263445}
   throwtopoint: {fileID: 0}
   player: {fileID: 0}
