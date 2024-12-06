@@ -13,6 +13,8 @@ public class FishInfo : MonoBehaviour
     public float distanceIncrease;
     public int worth;
 
+    public bool catched;
+
 
     public GameObject rod;
 
@@ -29,21 +31,38 @@ public class FishInfo : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Land"))
+        if (!catched)
         {
-            print("getfish");
-            if (gameObject.GetComponent<XRGrabInteractable>()) // enable grab
+
+
+            if (other.CompareTag("Land"))
             {
-                gameObject.GetComponent<XRGrabInteractable>().enabled = true;
-            }
-            if (gameObject.GetComponent<Rigidbody>()) /// enable grabbable
-            {
-                gameObject.GetComponent<Rigidbody>().isKinematic = false;
-            }
-            if (rod != null && rod.GetComponent<RodHandler>())
-            {
-                rod.GetComponent<RodHandler>().FishOnHook();
+                print("getfish");
+                if (gameObject.transform.GetComponent<XRGrabInteractable>()) // enable grab
+                {
+                    print("Enabled grab");
+                    gameObject.GetComponent<XRGrabInteractable>().enabled = true;
+                }
+                if (gameObject.transform.GetComponent<Rigidbody>()) /// enable grabbable
+                {
+                    print("Enabled rigid");
+                    gameObject.GetComponent<Rigidbody>().isKinematic = false;
+                }
+                if (rod != null && rod.GetComponent<RodHandler>())
+                {
+
+                    rod.GetComponent<RodHandler>().FishOnHook();
+                }
+                catched = true;
             }
         }
+    }
+    public void grabfish()
+    {
+        print("Grabbed fish");
+     if (rod != null && rod.GetComponent<RodHandler>())
+     {
+            rod.GetComponent<RodHandler>().TakenOffHook();
+     }
     }
 }

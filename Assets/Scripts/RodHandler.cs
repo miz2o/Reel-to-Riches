@@ -30,11 +30,13 @@ public class RodHandler : MonoBehaviour
 
     [Space]
     [Header("Editable Values")]
+    public Vector3 fishoncatchrotation;
     public int throwrotation;
     public Vector2 catchWait;
     public float minimumReel;
     public float distanceDecrease;
     public float howClose;
+
 
     [Space]
     [Header("Effects")]
@@ -272,13 +274,58 @@ public class RodHandler : MonoBehaviour
         lockthrow = true;
         fishtocatch = false;
         rodinwater = false;
+        isstarted = false;
+        if (currentFish != null)
+        {
+            currentFish.transform.parent = bobber.transform;
+            currentFish.transform.eulerAngles = fishoncatchrotation;
+        }
+
+        if (dynamicparent.GetComponent<DynamicBone>() != null)
+        {
+            dynamicparent.GetComponent<DynamicBone>().enabled = true;
+        }
 
     }
 
     public void TakenOffHook()
     {
-        currentFish.transform.parent = null;
-        currentFish = null;
+        // Detach the current fish
+        if (currentFish != null)
+        {
+            currentFish.transform.parent = null;
+            currentFish = null;
+        }
+
+        // Reset fishing state variables
+        lockthrow = false;
         isstarted = false;
+        rodinwater = false;
+        fishtocatch = false;
+        throwIncrease = 0;
+
+        // Reset the dynamic parent
+        if (dynamicparent.GetComponent<DynamicBone>() != null)
+        {
+            dynamicparent.GetComponent<DynamicBone>().enabled = false;
+        }
+
+        // Stop any playing audio effects
+        if (reelSFX.isPlaying)
+        {
+            reelSFX.Stop();
+        }
+
+        if (escapeSFX.isPlaying)
+        {
+            escapeSFX.Stop();
+        }
+
+        // Reset other flags
+        isWaiting = false;
+        isWaiting2 = false;
+        isWaiting3 = false;
+
+        print("Fishing state reset. Ready to fish again.");
     }
 }
