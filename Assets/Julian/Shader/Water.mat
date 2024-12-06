@@ -60,7 +60,7 @@ Material:
     - _FoamSpeed: 0.0005
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _RippleDensity: 50
+    - _RippleDensity: 500
     - _RippleSlimness: 8
     - _RippleSpeed: 4
     - _Scale: 0
