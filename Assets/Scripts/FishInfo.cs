@@ -24,10 +24,10 @@ public class FishInfo : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collision detected with: " + collision.gameObject.name);
         if (collision.transform.tag == "Floor")
         {
             print("getfish");
+
         }
     }
 }
