@@ -120,8 +120,7 @@ public class RodHandler : MonoBehaviour
         // Initialize target position if ThrowIncrease is 0
         if (throwIncrease == 0)
         {
-            Vector3 frontPosition = playercamera.transform.position + playercamera.transform.forward * 0.1f;
-            throwtopoint.transform.position = new Vector3(frontPosition.x, 0, frontPosition.z);
+          throwtopoint.transform.position = player.transform.position;
         }
 
         // Increment ThrowIncrease using coroutine
@@ -245,4 +244,20 @@ public class RodHandler : MonoBehaviour
         currentFish.transform.localPosition = Vector3.zero;
     }
 
+
+    public void FishOnHook()
+    {
+        print("Fish is fished");
+        lockthrow = true;
+        fishtocatch = false;
+        rodinwater = false;
+
+    }
+
+    public void TakenOffHook()
+    {
+        currentFish.transform.parent = null;
+        currentFish = null;
+        isstarted = false;
+    }
 }
