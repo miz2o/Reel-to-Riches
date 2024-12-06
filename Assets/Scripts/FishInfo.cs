@@ -27,9 +27,9 @@ public class FishInfo : MonoBehaviour
     {
 
     }
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
-        if (collision.transform.tag == "Land")
+        if (other.CompareTag("Land"))
         {
             print("getfish");
             if (gameObject.GetComponent<XRGrabInteractable>()) // enable grab
@@ -40,7 +40,7 @@ public class FishInfo : MonoBehaviour
             {
                 gameObject.GetComponent<Rigidbody>().isKinematic = false;
             }
-            if (rod.GetComponent<RodHandler>())
+            if (rod != null && rod.GetComponent<RodHandler>())
             {
                 rod.GetComponent<RodHandler>().FishOnHook();
             }

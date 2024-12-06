@@ -224,22 +224,43 @@ public class RodHandler : MonoBehaviour
     }
     public void PickFish()
     {
-        int index = 0;
+        int totalWeight = 0;
+
+        // Calculate the total weight of all fish
         foreach (int rarity in fishRaritys)
         {
-            int generatednumber = Random.Range(0, 100);
-            if (rarity <= generatednumber)
+            totalWeight += rarity;
+        }
+
+        // Generate a random number within the total weight
+        int generatedNumber = Random.Range(0, totalWeight);
+        Debug.Log($"Generated Number: {generatedNumber}, Total Weight: {totalWeight}");
+
+        int cumulativeWeight = 0;
+        int index = 0;
+
+        // Iterate through fish and find the match
+        foreach (int rarity in fishRaritys)
+        {
+            cumulativeWeight += rarity;
+
+            if (generatedNumber < cumulativeWeight)
             {
                 Debug.Log($"Chosen index: {index}, Rarity: {rarity}");
                 currentFish = Instantiate(fishPrefabs[index], throwtopoint.transform);
+                if (currentFish.GetComponent<FishInfo>())
+                {
+                    currentFish.GetComponent<FishInfo>().rod = gameObject;
+                }
                 currentFish.transform.localPosition = Vector3.zero;
-
-
                 return;
             }
+
             index++;
         }
-        print("no fish chosen");
+
+        // Fallback in case no fish is selected
+        Debug.Log("No fish chosen. Defaulting to index 0.");
         currentFish = Instantiate(fishPrefabs[0], throwtopoint.transform);
         currentFish.transform.localPosition = Vector3.zero;
     }
