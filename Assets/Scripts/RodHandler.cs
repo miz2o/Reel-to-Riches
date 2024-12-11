@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VRTemplate;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
+using UnityEngine.XR.OpenXR.Input;
+using UnityEngine.XR;
+using UnityEngine.XR.Interaction.Toolkit;
+using TMPro;
 
 public class RodHandler : MonoBehaviour
 {
@@ -18,6 +23,9 @@ public class RodHandler : MonoBehaviour
     public float lastKnobValue;
     public GameObject currentFish;
 
+
+
+
     [Space]
     [Header("GameObjects")]
     public GameObject rod;
@@ -27,6 +35,11 @@ public class RodHandler : MonoBehaviour
     public GameObject dynamicparent;
     public GameObject playercamera;
     public GameObject reeler;
+    public TMP_Text EscapeCounter;
+
+
+
+
 
     [Space]
     [Header("Editable Values")]
@@ -54,14 +67,16 @@ public class RodHandler : MonoBehaviour
     [Header("Values from fish")]
     public float escapeTimer;
     public float distanceIncrease;
+    public int howMuchTillBreak;
 
     void Start()
     {
-
+  
     }
 
     void Update()
     {
+
         if (currentFish != null)
         {
             currentFish.transform.localPosition = Vector3.zero;
@@ -150,15 +165,26 @@ public class RodHandler : MonoBehaviour
 
     IEnumerator IncrementThrowWithDelay()
     {
+        if (throwIncrease == 0)
+        {
+            // Initialize throwtopoint 0.5f units in front of the camera
+            Vector3 initialPosition = playercamera.transform.position + playercamera.transform.forward * howClose;
+            initialPosition.y = 0; // Ensure y stays at 0
+            throwtopoint.transform.position = initialPosition;
+
+            throwtopoint.transform.rotation = playercamera.transform.rotation;
+        }
+
         isWaiting = true; // Set waiting flag
         yield return new WaitForSeconds(0.1f); // Wait for a short delay
 
+        // Incrementally move throwtopoint forward
         Vector3 forwardIncrement = playercamera.transform.forward * 0.1f; // Move 0.1 units forward
         forwardIncrement.y = 0; // Ensure y stays at 0
         throwtopoint.transform.position += forwardIncrement; // Add the forward increment to the current position
 
         Vector3 position = throwtopoint.transform.position;
-        position.y = 0;
+        position.y = 0; // Ensure the height remains unchanged
         throwtopoint.transform.position = position;
 
         throwtopoint.transform.rotation = playercamera.transform.rotation;
@@ -175,10 +201,13 @@ public class RodHandler : MonoBehaviour
 
     IEnumerator WaitForFish()
     {
-        PickFish();
+        
+
+     
         isWaiting2 = true;
         float waitTime = UnityEngine.Random.Range(catchWait.x, catchWait.y);
         yield return new WaitForSeconds(waitTime);
+          PickFish();
 
         print("StartCatchingFish");
         fishtocatch = true;
@@ -221,6 +250,14 @@ public class RodHandler : MonoBehaviour
         Vector3 forwardIncrement = playercamera.transform.forward * distanceIncrease; // Move forward
         forwardIncrement.y = 0; // Ensure y stays at 0
         throwtopoint.transform.position += forwardIncrement;
+
+        howMuchTillBreak -= 1;
+        EscapeCounter.text = howMuchTillBreak.ToString();
+
+        if (howMuchTillBreak <= 0)
+        {
+            FishBreakFree();
+        }
 
         isWaiting3 = false; // Reset waiting flag
     }
@@ -307,7 +344,7 @@ public class RodHandler : MonoBehaviour
         // Reset the dynamic parent
         if (dynamicparent.GetComponent<DynamicBone>() != null)
         {
-            dynamicparent.GetComponent<DynamicBone>().enabled = false;
+            dynamicparent.GetComponent<DynamicBone>().enabled = true;
         }
 
         // Stop any playing audio effects
@@ -328,4 +365,10 @@ public class RodHandler : MonoBehaviour
 
         print("Fishing state reset. Ready to fish again.");
     }
+
+    public void FishBreakFree()
+    {
+        print("Fish too far, break free");
+    }
+
 }

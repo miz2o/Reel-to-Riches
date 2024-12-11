@@ -31,6 +31,9 @@ public class FishInfo : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
+  
+
+
         if (!catched)
         {
 
@@ -60,6 +63,7 @@ public class FishInfo : MonoBehaviour
     public void grabfish()
     {
         print("Grabbed fish");
+        catched = false;
      if (rod != null && rod.GetComponent<RodHandler>())
      {
             rod.GetComponent<RodHandler>().TakenOffHook();
