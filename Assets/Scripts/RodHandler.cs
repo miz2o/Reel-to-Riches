@@ -220,6 +220,7 @@ public class RodHandler : MonoBehaviour
         else
         {
             print("bobbero n land, reset previous values");
+            TakenOffHook();
         }
     }
 
@@ -298,6 +299,11 @@ public class RodHandler : MonoBehaviour
                 if (currentFish.GetComponent<FishInfo>())
                 {
                     currentFish.GetComponent<FishInfo>().rod = gameObject;
+
+                    escapeTimer = currentFish.GetComponent<FishInfo>().escapetimer;
+                    distanceIncrease = currentFish.GetComponent<FishInfo>().distanceIncrease;
+                    howMuchTillBreak = currentFish.GetComponent<FishInfo>().howMuchTillBreak;
+
                 }
                 currentFish.transform.localPosition = Vector3.zero;
                 return;
@@ -377,6 +383,8 @@ public class RodHandler : MonoBehaviour
     public void FishBreakFree()
     {
         print("Fish too far, break free");
+        Destroy(currentFish);
+        TakenOffHook();
     }
 
 }

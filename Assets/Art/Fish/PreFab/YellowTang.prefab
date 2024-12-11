@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 25938f9d62e21234dbefe5b606dbd526, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 50.171345
+      value: 46.52613
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 25938f9d62e21234dbefe5b606dbd526, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.76
+      value: 3.226
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 25938f9d62e21234dbefe5b606dbd526, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.6561065
+      value: -2.2243326
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 25938f9d62e21234dbefe5b606dbd526, type: 3}
       propertyPath: m_LocalRotation.w
@@ -282,9 +282,11 @@ MonoBehaviour:
   Index: 0
   Name: Yellow Tang
   Description: 
-  escapetimer: 0
-  distanceIncrease: 0
+  escapetimer: 0.3
+  distanceIncrease: 0.1
+  howMuchTillBreak: 200
   worth: 20
+  catched: 0
   rod: {fileID: 0}
 --- !u!65 &3873289216147395544
 BoxCollider:

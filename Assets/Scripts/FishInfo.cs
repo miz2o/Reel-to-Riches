@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Filtering;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
@@ -11,6 +12,7 @@ public class FishInfo : MonoBehaviour
     public string Description;
     public float escapetimer;
     public float distanceIncrease;
+    public int howMuchTillBreak;
     public int worth;
 
     public bool catched;
@@ -21,7 +23,6 @@ public class FishInfo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
