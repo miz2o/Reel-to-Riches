@@ -22,6 +22,7 @@ public class RodHandler : MonoBehaviour
     public bool fishtocatch;
     public float lastKnobValue;
     public GameObject currentFish;
+    public bool bobberinwater;
 
 
 
@@ -155,12 +156,13 @@ public class RodHandler : MonoBehaviour
             dynamicparent.GetComponent<DynamicBone>().enabled = false;
         }
         bobber.transform.position = throwtopoint.transform.position;
-        rodinwater = true;
+            rodinwater = true;
 
-        if (!isWaiting2 && !fishtocatch)
-        {
-            StartCoroutine(WaitForFish());
-        }
+            if (!isWaiting2 && !fishtocatch)
+            {
+                StartCoroutine(WaitForFish());
+            }
+      
     }
 
     IEnumerator IncrementThrowWithDelay()
@@ -207,12 +209,18 @@ public class RodHandler : MonoBehaviour
         isWaiting2 = true;
         float waitTime = UnityEngine.Random.Range(catchWait.x, catchWait.y);
         yield return new WaitForSeconds(waitTime);
-          PickFish();
-
-        print("StartCatchingFish");
-        fishtocatch = true;
-        isWaiting2 = false;
-        escapeSFX.Play();
+        if (bobberinwater)
+        {
+            PickFish();
+            print("StartCatchingFish");
+            fishtocatch = true;
+            isWaiting2 = false;
+            escapeSFX.Play();
+        }
+        else
+        {
+            print("bobbero n land, reset previous values");
+        }
     }
 
 

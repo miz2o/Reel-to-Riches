@@ -4,14 +4,23 @@ using UnityEngine;
 
 public class BobberCollision : MonoBehaviour
 {
-
+    public GameObject rod;
     public void OnTriggerEnter(Collider other)
     {
-        // Check if the triggering object has the tag "water"
-        if (other.CompareTag("Water"))
+        if (rod.GetComponent<RodHandler>())
         {
-            Debug.Log("Bobber entered the water!");
-            // Add your logic here
+            RodHandler rodhandler = rod.GetComponent<RodHandler>();
+            // Check if the triggering object has the tag "water"
+            if (other.CompareTag("Water"))
+            {
+                Debug.Log("Bobber entered the water!");
+                rodhandler.bobberinwater = true;
+            }
+            if (other.CompareTag("Land"))
+            {
+                Debug.Log("Bobber is on land!");
+                rodhandler.bobberinwater = false;
+            }
         }
     }
 }
