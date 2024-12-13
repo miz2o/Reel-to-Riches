@@ -1754,15 +1754,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: f84d00c15b4046d409eab1f259a31c06, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.302
+      value: 55.13
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f84d00c15b4046d409eab1f259a31c06, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.528
+      value: 0.935
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f84d00c15b4046d409eab1f259a31c06, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.743
+      value: 2.915
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f84d00c15b4046d409eab1f259a31c06, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1825,6 +1825,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f84d00c15b4046d409eab1f259a31c06, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6175857181325397444}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f84d00c15b4046d409eab1f259a31c06, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7052902791381584072}
   m_SourcePrefab: {fileID: 100100000, guid: f84d00c15b4046d409eab1f259a31c06, type: 3}
 --- !u!4 &8084609084474505971 stripped
 Transform:
@@ -2044,3 +2047,16 @@ MonoBehaviour:
   fishTag: Fish
   feedbackParticles: {fileID: 8647791703140943514}
   cashHandlerParent: {fileID: 0}
+--- !u!114 &7052902791381584072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8897315764698079305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eb9dd33df3c6b24c91587550c2295c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnpoint: {fileID: 0}
