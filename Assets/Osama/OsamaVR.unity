@@ -1132,7 +1132,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 4e-45, z: 1.2539e-41, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -2065,17 +2065,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6175857181325397444, guid: 662f0238c2aaf7f4a9d70a9d7a3c1a6b, type: 3}
-      propertyPath: fishTag
-      value: Fish
-      objectReference: {fileID: 0}
-    - target: {fileID: 6175857181325397444, guid: 662f0238c2aaf7f4a9d70a9d7a3c1a6b, type: 3}
       propertyPath: cashHandlerParent
       value: 
       objectReference: {fileID: 1402408364}
-    - target: {fileID: 6175857181325397444, guid: 662f0238c2aaf7f4a9d70a9d7a3c1a6b, type: 3}
-      propertyPath: feedbackParticles
-      value: 
-      objectReference: {fileID: 5389860529921994270}
     - target: {fileID: 8084609084474505971, guid: 662f0238c2aaf7f4a9d70a9d7a3c1a6b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.302
@@ -2125,11 +2117,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 662f0238c2aaf7f4a9d70a9d7a3c1a6b, type: 3}
---- !u!198 &5389860529921994270 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8647791703140943514, guid: 662f0238c2aaf7f4a9d70a9d7a3c1a6b, type: 3}
-  m_PrefabInstance: {fileID: 5389860529921994269}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6640387835074724097 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8956080746639446556, guid: b800e3caa5125e747b179042ca99c7ef, type: 3}
