@@ -28,7 +28,10 @@ public class FishInfo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (done)
+        {
+            transform.parent = null;
+        }
     }
     void OnTriggerEnter(Collider other)
     {
