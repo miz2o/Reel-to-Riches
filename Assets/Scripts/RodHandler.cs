@@ -7,6 +7,7 @@ using UnityEngine.XR.OpenXR.Input;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 using TMPro;
+using UnityEngine.UI;
 
 public class RodHandler : MonoBehaviour
 {
@@ -37,7 +38,8 @@ public class RodHandler : MonoBehaviour
     public GameObject dynamicparent;
     public GameObject playercamera;
     public GameObject reeler;
-    public TMP_Text EscapeCounter;
+    public TMP_Text escapeCounter;
+    public Slider escapeslider;
 
 
 
@@ -151,20 +153,76 @@ public class RodHandler : MonoBehaviour
 
     private void ThrowRod()
     {
-        // Additional logic for "casting" state
+        // Disable DynamicBone if present
         if (dynamicparent.GetComponent<DynamicBone>() != null)
         {
             dynamicparent.GetComponent<DynamicBone>().enabled = false;
         }
-        bobber.transform.position = throwtopoint.transform.position;
-            rodinwater = true;
 
-            if (!isWaiting2 && !fishtocatch)
-            {
-                StartCoroutine(WaitForFish());
-            }
-      
+        // Initial position of the bobber (at the rod's current position)
+        Vector3 startPos = bobber.transform.position;
+
+        // Target position (where you want the bobber to move to)
+        Vector3 targetPos = throwtopoint.transform.position;
+
+        // Start the move coroutine
+        StartCoroutine(MoveBobberAlongCurve(startPos, targetPos));
     }
+
+    private IEnumerator MoveBobberAlongCurve(Vector3 startPos, Vector3 targetPos)
+    {
+        // Duration for the movement (you can adjust this for a faster/slower throw)
+        float duration = 2f;
+        float elapsedTime = 0f;
+
+        // Calculate the control point for the curve (this determines the height of the arc)
+        Vector3 controlPoint = (startPos + targetPos) / 2f;
+        controlPoint.y += 2f; // Add height to create an arc
+
+        while (elapsedTime < duration)
+        {
+            // Calculate the fraction of the journey completed (0 to 1)
+            float t = elapsedTime / duration;
+
+            // Use the quadratic Bezier curve equation to find the position at time t
+            Vector3 position = QuadraticBezier(startPos, controlPoint, targetPos, t);
+
+            // Update bobber's position
+            bobber.transform.position = position;
+
+            // Increment elapsed time
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
+
+        // Ensure the bobber ends exactly at the target position
+        bobber.transform.position = targetPos;
+
+        // After reaching the target, set rodinwater to true and start waiting for a fish
+        rodinwater = true;
+
+        if (!isWaiting2 && !fishtocatch)
+        {
+            StartCoroutine(WaitForFish());
+        }
+    }
+
+    // Bezier Curve calculation (Quadratic)
+    private Vector3 QuadraticBezier(Vector3 startPos, Vector3 controlPoint, Vector3 targetPos, float t)
+    {
+        // Quadratic bezier curve formula: (1 - t)^2 * start + 2 * (1 - t) * t * control + t^2 * target
+        float u = 1 - t;
+        float tt = t * t;
+        float uu = u * u;
+
+        Vector3 position = uu * startPos; // (1 - t)^2 * start
+        position += 2 * u * t * controlPoint; // 2 * (1 - t) * t * control
+        position += tt * targetPos; // t^2 * target
+
+        return position;
+    }
+
 
     IEnumerator IncrementThrowWithDelay()
     {
@@ -262,17 +320,35 @@ public class RodHandler : MonoBehaviour
 
     }
 
+    // Store the initial value of howMuchTillBreak when the escape process starts
+    private int initialHowMuchTillBreak;
+
     IEnumerator EscapeDelay()
     {
         isWaiting3 = true; // Set waiting flag for escape
 
+        // Save the initial value of howMuchTillBreak at the start of the escape sequence
+        if (initialHowMuchTillBreak == 0)  // Only set it if it hasn't been set yet
+        {
+            initialHowMuchTillBreak = howMuchTillBreak;
+        }
+
         yield return new WaitForSeconds(escapeTimer);
-        Vector3 forwardIncrement = playercamera.transform.forward * distanceIncrease; // Move forward
+
+        // Move the throw point forward (no change needed here)
+        Vector3 forwardIncrement = playercamera.transform.forward * distanceIncrease;
         forwardIncrement.y = 0; // Ensure y stays at 0
         throwtopoint.transform.position += forwardIncrement;
 
+        // Decrease howMuchTillBreak by 1
         howMuchTillBreak -= 1;
-        EscapeCounter.text = howMuchTillBreak.ToString();
+        escapeCounter.text = howMuchTillBreak.ToString();
+
+        // Calculate the percentage of howMuchTillBreak remaining
+        float remainingPercentage = (float)howMuchTillBreak / (float)initialHowMuchTillBreak;
+
+        // Update the slider value to match the remaining percentage
+        escapeslider.value = remainingPercentage;
 
         if (howMuchTillBreak <= 0)
         {
@@ -281,6 +357,7 @@ public class RodHandler : MonoBehaviour
 
         isWaiting3 = false; // Reset waiting flag
     }
+
     public void PickFish()
     {
         int totalWeight = 0;
@@ -406,7 +483,6 @@ public class RodHandler : MonoBehaviour
 
     public void FishBreakFree()
     {
-        currentFish = null;
         print("Fish too far, break free");
         Destroy(currentFish);
         TakenOffHook();
