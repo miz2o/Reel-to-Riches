@@ -23,6 +23,7 @@ public class RodHandler : MonoBehaviour
     public float lastKnobValue;
     public GameObject currentFish;
     public bool bobberinwater;
+    public bool reelplaying;
 
 
 
@@ -167,46 +168,33 @@ public class RodHandler : MonoBehaviour
 
     IEnumerator IncrementThrowWithDelay()
     {
-        Vector3 startPosition = Vector3.zero; // Declare startPosition outside the condition for reuse
-
         if (throwIncrease == 0)
         {
-            // Get the forward vector and project it onto the horizontal plane
-            Vector3 forward = playercamera.transform.forward;
-            forward.y = 0; // Remove the vertical component
-            forward.Normalize(); // Ensure the vector is of unit length
+            // Initialize throwtopoint 0.5f units in front of the camera
+            Vector3 initialPosition = playercamera.transform.position + playercamera.transform.forward * howClose;
+            initialPosition.y = 0; // Ensure y stays at 0
+            throwtopoint.transform.position = initialPosition;
 
-            // Calculate the initial position
-            startPosition = playercamera.transform.position + forward * howClose;
-
-            // Set the initial position
-            throwtopoint.transform.position = startPosition;
-
-            // Set the initial rotation
             throwtopoint.transform.rotation = playercamera.transform.rotation;
         }
 
         isWaiting = true; // Set waiting flag
-        yield return new WaitForSeconds(0.1f); // Wait for a short delay
+        yield return new WaitForSeconds(0.005f); // Wait for a short delay
 
-        // Incrementally move throwtopoint forward from startPosition
-        Vector3 forwardDirection = playercamera.transform.forward;
-        forwardDirection.y = 0; // Remove vertical component
-        forwardDirection.Normalize(); // Ensure it's normalized
+        // Incrementally move throwtopoint forward
+        Vector3 forwardIncrement = playercamera.transform.forward * 0.1f; // Move 0.1 units forward
+        forwardIncrement.y = 0; // Ensure y stays at 0
+        throwtopoint.transform.position += forwardIncrement; // Add the forward increment to the current position
 
-        // Calculate the new position relative to the startPosition
-        Vector3 newPosition = startPosition + forwardDirection * (throwIncrease * 0.1f);
+        Vector3 position = throwtopoint.transform.position;
+        position.y = 0; // Ensure the height remains unchanged
+        throwtopoint.transform.position = position;
 
-        // Set the position and ensure it stays on the horizontal plane
-        newPosition.y = 0;
-        throwtopoint.transform.position = newPosition;
-
-        // Update the rotation to match the camera
         throwtopoint.transform.rotation = playercamera.transform.rotation;
 
         throwIncrease += 1;
 
-        if (throwIncrease >= 50)
+        if (throwIncrease >= 1000)
         {
             lockthrow = true;
         }
@@ -248,6 +236,14 @@ public class RodHandler : MonoBehaviour
 
             if (!isreeling)
             {
+                if (!reelplaying)
+                {
+                    reelplaying = true;
+                    reelSFX.Play();
+                }
+
+
+
                 isreeling = true;
                 reelSFX.Play();
 
@@ -336,7 +332,12 @@ public class RodHandler : MonoBehaviour
 
     public void FishOnHook()
     {
-        print("Fish is fished");
+        print("Fishonhook");
+        if (reelplaying)
+        {
+            reelplaying = false;
+            reelSFX.Stop();
+        }
         lockthrow = true;
         fishtocatch = false;
         rodinwater = false;
@@ -356,6 +357,7 @@ public class RodHandler : MonoBehaviour
 
     public void TakenOffHook()
     {
+        print("Takenoffhook");
         // Detach the current fish
         if (currentFish != null)
         {

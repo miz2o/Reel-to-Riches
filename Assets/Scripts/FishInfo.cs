@@ -63,6 +63,7 @@ public class FishInfo : MonoBehaviour
     }
     public void grabfish()
     {
+        transform.parent = null;
         print("Grabbed fish");
         catched = false;
      if (rod != null && rod.GetComponent<RodHandler>())
