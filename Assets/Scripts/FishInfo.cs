@@ -16,7 +16,7 @@ public class FishInfo : MonoBehaviour
     public int worth;
 
     public bool catched;
-
+    public bool done;
 
     public GameObject rod;
 
@@ -35,21 +35,21 @@ public class FishInfo : MonoBehaviour
   
 
 
-        if (!catched)
+        if (!catched && !done)
         {
-
-
+     
             if (other.CompareTag("Land"))
             {
-                print("getfish");
+                print("Catched");
+
                 if (gameObject.transform.GetComponent<XRGrabInteractable>()) // enable grab
                 {
-                    print("Enabled grab");
+                
                     gameObject.GetComponent<XRGrabInteractable>().enabled = true;
                 }
                 if (gameObject.transform.GetComponent<Rigidbody>()) /// enable grabbable
                 {
-                    print("Enabled rigid");
+               
                     gameObject.GetComponent<Rigidbody>().isKinematic = false;
                 }
                 if (rod != null && rod.GetComponent<RodHandler>())
@@ -63,12 +63,22 @@ public class FishInfo : MonoBehaviour
     }
     public void grabfish()
     {
-        transform.parent = null;
-        print("Grabbed fish");
-        catched = false;
-     if (rod != null && rod.GetComponent<RodHandler>())
-     {
-            rod.GetComponent<RodHandler>().TakenOffHook();
-     }
+        if (!done)
+        {
+            // Detach the fish from its current parent (if it was parented)
+            transform.parent = null;
+            print("Grabbed fish");
+
+            // Reset the 'catched' state and update done flag
+            catched = false;
+            done = true;
+
+            // Notify the rod to reset the fishing state (detach fish)
+            if (rod != null && rod.GetComponent<RodHandler>())
+            {
+                rod.GetComponent<RodHandler>().TakenOffHook();  // This ensures the rod removes the fish from the bobber
+            }
+        }
     }
+
 }

@@ -332,53 +332,59 @@ public class RodHandler : MonoBehaviour
 
     public void FishOnHook()
     {
-        print("Fishonhook");
+        print("Fish on hook");
+
+        // Disable reel playing if needed
         if (reelplaying)
         {
             reelplaying = false;
             reelSFX.Stop();
         }
+
         lockthrow = true;
         fishtocatch = false;
         rodinwater = false;
         isstarted = false;
+
         if (currentFish != null)
         {
+            // Attach fish to bobber when caught
             currentFish.transform.parent = bobber.transform;
-            currentFish.transform.eulerAngles = fishoncatchrotation;
+            currentFish.transform.eulerAngles = fishoncatchrotation;  // Set appropriate rotation
         }
 
         if (dynamicparent.GetComponent<DynamicBone>() != null)
         {
             dynamicparent.GetComponent<DynamicBone>().enabled = true;
         }
-
     }
+
 
     public void TakenOffHook()
     {
-        print("Takenoffhook");
-        // Detach the current fish
+        print("Taken off hook");
+
+        // Only detach if currentFish exists
         if (currentFish != null)
         {
-            currentFish.transform.parent = null;
-            currentFish = null;
+            currentFish.transform.parent = null; // Detach the fish
         }
 
-        // Reset fishing state variables
+        // Reset all fishing-related flags and states
         lockthrow = false;
         isstarted = false;
         rodinwater = false;
         fishtocatch = false;
         throwIncrease = 0;
+        currentFish = null;
 
-        // Reset the dynamic parent
+        // Reset dynamic parent
         if (dynamicparent.GetComponent<DynamicBone>() != null)
         {
             dynamicparent.GetComponent<DynamicBone>().enabled = true;
         }
 
-        // Stop any playing audio effects
+        // Stop audio if playing
         if (reelSFX.isPlaying)
         {
             reelSFX.Stop();
@@ -389,7 +395,7 @@ public class RodHandler : MonoBehaviour
             escapeSFX.Stop();
         }
 
-        // Reset other flags
+        // Reset waiting flags
         isWaiting = false;
         isWaiting2 = false;
         isWaiting3 = false;
@@ -397,8 +403,10 @@ public class RodHandler : MonoBehaviour
         print("Fishing state reset. Ready to fish again.");
     }
 
+
     public void FishBreakFree()
     {
+        currentFish = null;
         print("Fish too far, break free");
         Destroy(currentFish);
         TakenOffHook();
