@@ -6,7 +6,6 @@ public class BucketScript : MonoBehaviour
     public string fishTag;
     public ParticleSystem feedbackParticles;
     public GameObject cashHandlerParent;
-    public GameObject caughtcanvas;
 
     private void OnCollisionEnter(Collision collision)
     {
