@@ -7413,6 +7413,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 908128896}
   m_CullTransparentMesh: 1
+--- !u!1 &908865720 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3006240089234783577, guid: 291a71f36f08d2442a5061317e9f6c84, type: 3}
+  m_PrefabInstance: {fileID: 3102073212540908517}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &915057045
 GameObject:
   m_ObjectHideFlags: 0
@@ -17803,6 +17808,10 @@ PrefabInstance:
       propertyPath: m_Value
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3006240089234783577, guid: 291a71f36f08d2442a5061317e9f6c84, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3910753662976263445, guid: 291a71f36f08d2442a5061317e9f6c84, type: 3}
       propertyPath: m_Name
       value: HengelBeginner
@@ -17823,6 +17832,10 @@ PrefabInstance:
       propertyPath: throwstars
       value: 
       objectReference: {fileID: 588227188}
+    - target: {fileID: 4359591667619355911, guid: 291a71f36f08d2442a5061317e9f6c84, type: 3}
+      propertyPath: escapecanvas
+      value: 
+      objectReference: {fileID: 908865720}
     - target: {fileID: 4359591667619355911, guid: 291a71f36f08d2442a5061317e9f6c84, type: 3}
       propertyPath: escapeslider
       value: 
@@ -17901,11 +17914,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8635175384278288976, guid: 291a71f36f08d2442a5061317e9f6c84, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8635175384278288976, guid: 291a71f36f08d2442a5061317e9f6c84, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

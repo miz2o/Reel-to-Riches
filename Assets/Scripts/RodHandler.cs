@@ -40,6 +40,7 @@ public class RodHandler : MonoBehaviour
     public GameObject reeler;
     public TMP_Text escapeCounter;
     public Slider escapeslider;
+    public GameObject escapecanvas;
     public ParticleSystem throwstars;
 
 
@@ -257,7 +258,7 @@ public class RodHandler : MonoBehaviour
 
         throwIncrease += 1;
 
-        if (throwIncrease >= 1000)
+        if (throwIncrease >= 2000)
         {
             lockthrow = true;
         }
@@ -331,6 +332,7 @@ public class RodHandler : MonoBehaviour
     IEnumerator EscapeDelay()
     {
         isWaiting3 = true; // Set waiting flag for escape
+        escapecanvas.SetActive(true);
 
         // Save the initial value of howMuchTillBreak at the start of the escape sequence
         if (initialHowMuchTillBreak == 0)  // Only set it if it hasn't been set yet
@@ -427,6 +429,7 @@ public class RodHandler : MonoBehaviour
         fishtocatch = false;
         rodinwater = false;
         isstarted = false;
+        escapecanvas.SetActive(false);
 
         if (currentFish != null)
         {
