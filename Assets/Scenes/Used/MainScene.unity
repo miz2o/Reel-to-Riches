@@ -10955,7 +10955,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8386889006090402065, guid: 8cd7c22c58491934b952b4239625da84, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.991499
+      value: -5.782
       objectReference: {fileID: 0}
     - target: {fileID: 8386889006090402065, guid: 8cd7c22c58491934b952b4239625da84, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10986,7 +10986,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8866897795194539227, guid: 8cd7c22c58491934b952b4239625da84, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cd7c22c58491934b952b4239625da84, type: 3}
@@ -13631,7 +13632,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: -1, y: 8, z: 9, w: -10}
+  m_BoundingSphereOverride: {x: 0, y: 3e-44, z: 4.5904e-41, w: 7.126223e-37}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

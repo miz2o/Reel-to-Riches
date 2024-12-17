@@ -252,7 +252,8 @@ public class RodHandler : MonoBehaviour
         position.y = 0; // Ensure the height remains unchanged
         throwtopoint.transform.position = position;
 
-        throwtopoint.transform.rotation = playercamera.transform.rotation;
+        float cameraYaw = playercamera.transform.eulerAngles.y;
+        throwtopoint.transform.rotation = Quaternion.Euler(0, cameraYaw, 0);
 
         throwIncrease += 1;
 
