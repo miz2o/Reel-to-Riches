@@ -40,6 +40,7 @@ public class RodHandler : MonoBehaviour
     public GameObject reeler;
     public TMP_Text escapeCounter;
     public Slider escapeslider;
+    public ParticleSystem throwstars;
 
 
 
@@ -141,6 +142,7 @@ public class RodHandler : MonoBehaviour
         // Initialize target position if ThrowIncrease is 0
         if (throwIncrease == 0)
         {
+            throwstars.Play();
           throwtopoint.transform.position = player.transform.position;
         }
 
@@ -192,6 +194,8 @@ public class RodHandler : MonoBehaviour
 
             // Increment elapsed time
             elapsedTime += Time.deltaTime;
+
+            throwstars.Stop();
 
             yield return null;
         }
