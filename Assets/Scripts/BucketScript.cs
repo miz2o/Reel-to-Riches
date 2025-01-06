@@ -1,5 +1,7 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class BucketScript : MonoBehaviour
 {
@@ -70,6 +72,7 @@ public class BucketScript : MonoBehaviour
                 if (fishInfo.Index == 8)
                 {
                     print("Win");
+                    SceneManager.LoadScene("WinScreen");
                 }
 
             }
