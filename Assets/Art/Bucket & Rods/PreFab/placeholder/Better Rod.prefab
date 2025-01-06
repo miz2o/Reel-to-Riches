@@ -1054,17 +1054,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94e7fdd1797e70a4f8625f0024f0f34b, type: 3}
---- !u!114 &2733764945722442762 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 286484217003718782, guid: 94e7fdd1797e70a4f8625f0024f0f34b, type: 3}
-  m_PrefabInstance: {fileID: 2740866276396153972}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &5757557090348193682 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7633444071478717414, guid: 94e7fdd1797e70a4f8625f0024f0f34b, type: 3}
@@ -1477,7 +1466,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3910753662976263445}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
@@ -1599,7 +1588,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3910753662976263445}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54434f466d1fd8247affc9edbd593080, type: 3}
   m_Name: 
@@ -1621,17 +1610,17 @@ MonoBehaviour:
   dynamicparent: {fileID: 996713863299882341}
   playercamera: {fileID: 0}
   reeler: {fileID: 1755871927820073051}
-  escapeCounter: {fileID: 6649145046888935780}
-  escapeslider: {fileID: 2733764945722442762}
+  escapeCounter: {fileID: 0}
+  escapeslider: {fileID: 0}
   throwstars: {fileID: 0}
   fishoncatchrotation: {x: 90, y: 0, z: 0}
   throwrotation: -60
   catchWait: {x: 1, y: 3}
   minimumReel: 0.1
-  distanceDecrease: 0.15
+  distanceDecrease: 0.3
   howClose: 0
-  reelSFX: {fileID: 1975063661875218001}
-  escapeSFX: {fileID: 6235365884502399657}
+  reelSFX: {fileID: 0}
+  escapeSFX: {fileID: 0}
   fishPrefabs:
   - {fileID: 4679335752838968857, guid: 6b29b491ddbce83489b25c8f68495fcb, type: 3}
   - {fileID: 6263769913992671296, guid: fa2f215a211357b4c85c795e01e95c84, type: 3}
@@ -1639,7 +1628,7 @@ MonoBehaviour:
   - {fileID: 7184765778323341749, guid: 9c78f6e896d378546aa382dba732c310, type: 3}
   - {fileID: 2547943627577769152, guid: ce16dd803737fcf44a629c99cb02d751, type: 3}
   - {fileID: 3837188732929755953, guid: b249db87e37c0d94b83e151c12c24084, type: 3}
-  fishRaritys: 010000000100000001000000010000000100000001000000
+  fishRaritys: 14000000280000000a0000001e0000001e00000005000000
   escapeTimer: 0.3
   distanceIncrease: 0.1
   howMuchTillBreak: 200

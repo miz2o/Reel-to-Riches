@@ -186,7 +186,7 @@ MonoBehaviour:
   escapetimer: 0.3
   distanceIncrease: 0.1
   howMuchTillBreak: 200
-  worth: 20
+  worth: 1000000
   catched: 0
   done: 0
   rod: {fileID: 0}

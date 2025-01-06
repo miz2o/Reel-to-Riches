@@ -128,9 +128,9 @@ MonoBehaviour:
   Name: Yellowfin Tuna
   Description: 
   escapetimer: 0.3
-  distanceIncrease: 0.1
-  howMuchTillBreak: 200
-  worth: 20
+  distanceIncrease: 0.5
+  howMuchTillBreak: 50
+  worth: 5
   catched: 0
   done: 0
   rod: {fileID: 0}

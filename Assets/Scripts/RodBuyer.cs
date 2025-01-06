@@ -16,24 +16,19 @@ public class RodBuyer : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     public void trybuy()
     {
+        print("TryBuy");
         CashHandler cashHandler = cashHandlerParent.GetComponent<CashHandler>();
 
         if (cashHandler != null)
         {
-            if (cashHandler.cash - price > 0)
+            if (cashHandler.cash >= price) // Check if there's enough money
             {
                 cashHandler.cash = cashHandler.cash - price;
                 buytext.text = "Bought";
 
-                if (rodToBuy.GetComponent<XRGrabInteractable>() != null & rodToBuy.GetComponent<RodHandler>() != null)
+                if (rodToBuy.GetComponent<XRGrabInteractable>() != null && rodToBuy.GetComponent<RodHandler>() != null)
                 {
                     rodToBuy.GetComponent<XRGrabInteractable>().enabled = true;
                     rodToBuy.GetComponent<RodHandler>().enabled = true;

@@ -4107,6 +4107,8 @@ GameObject:
   - component: {fileID: 518604221}
   - component: {fileID: 518604220}
   - component: {fileID: 518604219}
+  - component: {fileID: 518604223}
+  - component: {fileID: 518604224}
   m_Layer: 0
   m_Name: RodBuyPlaceholder
   m_TagString: Untagged
@@ -4201,6 +4203,106 @@ Transform:
   - {fileID: 654737317}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 175.181, z: 0}
+--- !u!114 &518604223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518604218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1451e29180df2f24baff1ff595461c82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rodToBuy: {fileID: 1625770845804248026}
+  price: 20
+  cashHandlerParent: {fileID: 1402408364}
+  buytext: {fileID: 532109098}
+--- !u!114 &518604224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518604218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a35f6cfbfba9b548aaa00d52cfe8a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InteractionManager: {fileID: 0}
+  m_Colliders: []
+  m_InteractionLayers:
+    m_Bits: 1
+  m_DistanceCalculationMode: 1
+  m_SelectMode: 0
+  m_FocusMode: 1
+  m_CustomReticle: {fileID: 0}
+  m_AllowGazeInteraction: 0
+  m_AllowGazeSelect: 0
+  m_OverrideGazeTimeToSelect: 0
+  m_GazeTimeToSelect: 0.5
+  m_OverrideTimeToAutoDeselectGaze: 0
+  m_TimeToAutoDeselectGaze: 3
+  m_AllowGazeAssistance: 0
+  m_FirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstSelectEntered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 518604223}
+        m_TargetAssemblyTypeName: RodBuyer, Assembly-CSharp
+        m_MethodName: trybuy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_LastSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstFocusEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastFocusExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FocusEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FocusExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Activated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Deactivated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_StartingHoverFilters: []
+  m_StartingSelectFilters: []
+  m_StartingInteractionStrengthFilters: []
 --- !u!1 &528032898
 GameObject:
   m_ObjectHideFlags: 0
@@ -5525,7 +5627,6 @@ GameObject:
   - component: {fileID: 654737320}
   - component: {fileID: 654737319}
   - component: {fileID: 654737318}
-  - component: {fileID: 654737321}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -5616,62 +5717,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &654737321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 654737316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 518604218}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1001 &692397217
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18123,30 +18168,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3871444962572368213, guid: b48c4c00a85447643ba680723b969001, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3910753662976263445, guid: b48c4c00a85447643ba680723b969001, type: 3}
       propertyPath: m_Name
       value: Better Rod
       objectReference: {fileID: 0}
     - target: {fileID: 4359591667619355911, guid: b48c4c00a85447643ba680723b969001, type: 3}
-      propertyPath: rod
-      value: 
-      objectReference: {fileID: 1625770845804248026}
-    - target: {fileID: 4359591667619355911, guid: b48c4c00a85447643ba680723b969001, type: 3}
-      propertyPath: bobber
-      value: 
-      objectReference: {fileID: 1625770845804248029}
-    - target: {fileID: 4359591667619355911, guid: b48c4c00a85447643ba680723b969001, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 2017277224}
-    - target: {fileID: 4359591667619355911, guid: b48c4c00a85447643ba680723b969001, type: 3}
-      propertyPath: reeler
-      value: 
-      objectReference: {fileID: 1625770845804248027}
     - target: {fileID: 4359591667619355911, guid: b48c4c00a85447643ba680723b969001, type: 3}
       propertyPath: reelSFX
       value: 
@@ -18155,10 +18184,6 @@ PrefabInstance:
       propertyPath: escapeSFX
       value: 
       objectReference: {fileID: 1862530413}
-    - target: {fileID: 4359591667619355911, guid: b48c4c00a85447643ba680723b969001, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4359591667619355911, guid: b48c4c00a85447643ba680723b969001, type: 3}
       propertyPath: throwstars
       value: 
@@ -18176,17 +18201,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1419457774}
     - target: {fileID: 4359591667619355911, guid: b48c4c00a85447643ba680723b969001, type: 3}
-      propertyPath: dynamicparent
-      value: 
-      objectReference: {fileID: 1625770845804248028}
-    - target: {fileID: 4359591667619355911, guid: b48c4c00a85447643ba680723b969001, type: 3}
       propertyPath: escapeCounter
       value: 
       objectReference: {fileID: 2089202552}
-    - target: {fileID: 4359591667619355911, guid: b48c4c00a85447643ba680723b969001, type: 3}
-      propertyPath: distanceDecrease
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 4399481443025313711, guid: b48c4c00a85447643ba680723b969001, type: 3}
       propertyPath: m_LocalPosition.x
       value: 48.97
@@ -18243,21 +18260,6 @@ PrefabInstance:
 --- !u!1 &1625770845804248026 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3910753662976263445, guid: b48c4c00a85447643ba680723b969001, type: 3}
-  m_PrefabInstance: {fileID: 1625770845804248025}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1625770845804248027 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1755871927820073051, guid: b48c4c00a85447643ba680723b969001, type: 3}
-  m_PrefabInstance: {fileID: 1625770845804248025}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1625770845804248028 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 996713863299882341, guid: b48c4c00a85447643ba680723b969001, type: 3}
-  m_PrefabInstance: {fileID: 1625770845804248025}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1625770845804248029 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5545826026129540035, guid: b48c4c00a85447643ba680723b969001, type: 3}
   m_PrefabInstance: {fileID: 1625770845804248025}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1930242967322398558
@@ -18531,6 +18533,26 @@ PrefabInstance:
       propertyPath: throwtopoint
       value: 
       objectReference: {fileID: 1419457774}
+    - target: {fileID: 4359591667619355911, guid: 291a71f36f08d2442a5061317e9f6c84, type: 3}
+      propertyPath: fishRaritys.Array.data[0]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359591667619355911, guid: 291a71f36f08d2442a5061317e9f6c84, type: 3}
+      propertyPath: fishRaritys.Array.data[1]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359591667619355911, guid: 291a71f36f08d2442a5061317e9f6c84, type: 3}
+      propertyPath: fishRaritys.Array.data[3]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359591667619355911, guid: 291a71f36f08d2442a5061317e9f6c84, type: 3}
+      propertyPath: fishRaritys.Array.data[4]
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4359591667619355911, guid: 291a71f36f08d2442a5061317e9f6c84, type: 3}
+      propertyPath: fishRaritys.Array.data[5]
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4399481443025313711, guid: 291a71f36f08d2442a5061317e9f6c84, type: 3}
       propertyPath: m_LocalPosition.x
       value: 55.564

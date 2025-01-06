@@ -284,7 +284,7 @@ MonoBehaviour:
   Description: 
   escapetimer: 0.3
   distanceIncrease: 0.1
-  howMuchTillBreak: 200
+  howMuchTillBreak: 100
   worth: 20
   catched: 0
   done: 0
