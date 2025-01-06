@@ -244,7 +244,7 @@ public class RodHandler : MonoBehaviour
         yield return new WaitForSeconds(0.005f); // Wait for a short delay
 
         // Incrementally move throwtopoint forward
-        Vector3 forwardIncrement = playercamera.transform.forward * 0.1f; // Move 0.1 units forward
+        Vector3 forwardIncrement = playercamera.transform.forward * 0.5f; // Move 0.1 units forward
         forwardIncrement.y = 0; // Ensure y stays at 0
         throwtopoint.transform.position += forwardIncrement; // Add the forward increment to the current position
 

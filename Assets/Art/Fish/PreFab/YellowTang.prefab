@@ -287,6 +287,7 @@ MonoBehaviour:
   howMuchTillBreak: 200
   worth: 20
   catched: 0
+  done: 0
   rod: {fileID: 0}
 --- !u!65 &3873289216147395544
 BoxCollider:
