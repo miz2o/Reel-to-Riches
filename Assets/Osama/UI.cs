@@ -9,6 +9,7 @@ public class UI : MonoBehaviour
     public GameObject options;
     public GameObject canvas;
     public GameObject credits;
+    public GameObject shop;
     public static bool menuON;
     public AudioSource MusicSource;
     public Slider slider;
@@ -44,10 +45,16 @@ public class UI : MonoBehaviour
         menu.SetActive(true);
         options.SetActive(false);
         credits.SetActive(false);
+        shop.SetActive(false);
     }
     public void ToCredits()
     {
         menu.SetActive(false);
         credits.SetActive(true);
+    }
+    public void ToShop()
+    {
+        menu.SetActive(false);
+        shop.SetActive(true);
     }
 }

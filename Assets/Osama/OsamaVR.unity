@@ -1132,7 +1132,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 4e-45, z: 1.2539e-41, w: 0}
+  m_BoundingSphereOverride: {x: 3.306076e-39, y: 0, z: 0, w: 8e-44}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -2011,6 +2011,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 4541137793835130708, guid: 647ebcbef425fa54db2476e27027230b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToShop
+      objectReference: {fileID: 0}
     - target: {fileID: 5237079059887011393, guid: 647ebcbef425fa54db2476e27027230b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2115,43 +2119,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6626902951157988929, guid: 662f0238c2aaf7f4a9d70a9d7a3c1a6b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5389860529921994271}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 662f0238c2aaf7f4a9d70a9d7a3c1a6b, type: 3}
---- !u!1 &5389860529921994270 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6626902951157988929, guid: 662f0238c2aaf7f4a9d70a9d7a3c1a6b, type: 3}
-  m_PrefabInstance: {fileID: 5389860529921994269}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5389860529921994271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5389860529921994270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a2d7d89889b4d94fa1f8d6fe49788e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Target: {fileID: 0}
-  m_TargetOffset: {x: 0, y: 0, z: 0}
-  m_FollowInLocalSpace: 0
-  m_ApplyTargetInLocalSpace: 0
-  m_MovementSpeed: 6
-  m_MovementSpeedVariancePercentage: 0.25
-  m_SnapOnEnable: 1
-  m_PositionFollowMode: 0
-  m_MinDistanceAllowed: 0.01
-  m_MaxDistanceAllowed: 0.3
-  m_TimeUntilThresholdReachesMaxDistance: 3
-  m_RotationFollowMode: 2
-  m_MinAngleAllowed: 0.1
-  m_MaxAngleAllowed: 5
-  m_TimeUntilThresholdReachesMaxAngle: 3
 --- !u!1 &6640387835074724097 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8956080746639446556, guid: b800e3caa5125e747b179042ca99c7ef, type: 3}
@@ -2177,6 +2146,7 @@ MonoBehaviour:
   howMuchTillBreak: 0
   worth: 20
   catched: 0
+  done: 0
   rod: {fileID: 0}
 --- !u!1001 &8829968635388283898
 PrefabInstance:
