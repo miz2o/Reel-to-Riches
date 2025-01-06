@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a0625f7ef3d9c9b418070a68d6ca9553, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 56.128887
+      value: 37.49143
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a0625f7ef3d9c9b418070a68d6ca9553, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.269
+      value: 4.7069993
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a0625f7ef3d9c9b418070a68d6ca9553, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.78212
+      value: 2.16719
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a0625f7ef3d9c9b418070a68d6ca9553, type: 3}
       propertyPath: m_LocalRotation.w
@@ -139,8 +139,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.4229126, y: 3.0291913, z: 13.41243}
-  m_Center: {x: 0.01159668, y: 0.22519743, z: -6.8302574}
+  m_Size: {x: 1.7053757, y: 1.5460234, z: 8.597248}
+  m_Center: {x: 0.37036514, y: 0.31745958, z: -6.284029}
 --- !u!54 &5917438197672514304
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -184,7 +184,7 @@ MonoBehaviour:
   Name: Megladon
   Description: 
   escapetimer: 0.3
-  distanceIncrease: 0.1
+  distanceIncrease: 1
   howMuchTillBreak: 200
   worth: 1000000
   catched: 0
@@ -343,5 +343,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.9113579, y: 1.460546, z: 8.174519}
+  m_Center: {x: 0.11038017, y: 0.23027301, z: -5.1843433}
