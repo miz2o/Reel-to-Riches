@@ -66,6 +66,12 @@ public class BucketScript : MonoBehaviour
             if (fishInfo != null && cashHandler != null)
             {
                 cashHandler.cash += fishInfo.worth;
+
+                if (fishInfo.Index == 8)
+                {
+                    print("Win");
+                }
+
             }
 
             // Deactivate the fish object
