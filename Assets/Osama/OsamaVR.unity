@@ -2011,10 +2011,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
-    - target: {fileID: 4541137793835130708, guid: 647ebcbef425fa54db2476e27027230b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToShop
-      objectReference: {fileID: 0}
     - target: {fileID: 5237079059887011393, guid: 647ebcbef425fa54db2476e27027230b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
