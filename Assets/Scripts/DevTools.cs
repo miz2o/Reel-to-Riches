@@ -23,7 +23,7 @@ public class DevTools : MonoBehaviour
         if (cashHandler != null)
         {
             cashHandler.cash += 999999;
-            SpawnObjects();
+           
         }
     }
 
