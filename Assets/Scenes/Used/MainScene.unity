@@ -20795,6 +20795,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2089202552}
     - target: {fileID: 4188469361371729611, guid: 718a1a4312558b2418496f249df572bf, type: 3}
+      propertyPath: distanceDecrease
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4188469361371729611, guid: 718a1a4312558b2418496f249df572bf, type: 3}
       propertyPath: fishRaritys.Array.data[6]
       value: 200
       objectReference: {fileID: 0}
