@@ -11,11 +11,8 @@ public class RodBuyer : MonoBehaviour
     public int price;
     public GameObject cashHandlerParent;
     public TMP_Text buytext;
+    public GameObject storeSpawn;
 
-
-
-
-    // Start is called before the first frame update
     public void trybuy()
     {
         print("TryBuy");
@@ -25,19 +22,35 @@ public class RodBuyer : MonoBehaviour
         {
             if (cashHandler.cash >= price) // Check if there's enough money
             {
-                cashHandler.cash = cashHandler.cash - price;
+                cashHandler.cash -= price;
                 buytext.text = "Bought";
 
-                if (rodToBuy.GetComponent<XRGrabInteractable>() != null && rodToBuy.GetComponent<RodHandler>() != null)
+                // Check if rodToBuy and storeSpawn are set
+                if (rodToBuy != null && storeSpawn != null)
                 {
-                    rodToBuy.GetComponent<XRGrabInteractable>().enabled = true;
-                    rodToBuy.GetComponent<RodHandler>().enabled = true;
+                    // Instantiate the rodToBuy at the storeSpawn location and rotation
+                    GameObject newRod = Instantiate(rodToBuy, storeSpawn.transform.position, storeSpawn.transform.rotation);
+
+                    // Check if the new rod has a Rigidbody and set isKinematic to false
+                    Rigidbody rodRigidbody = newRod.GetComponent<Rigidbody>();
+                    if (rodRigidbody != null)
+                    {
+                        rodRigidbody.isKinematic = false;
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("Rod or Spawn location is not set!");
                 }
             }
             else
             {
                 buytext.text = "Not enough money";
             }
+        }
+        else
+        {
+            Debug.LogError("CashHandler not found!");
         }
     }
 }

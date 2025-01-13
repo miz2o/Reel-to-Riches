@@ -8,7 +8,7 @@ public class BucketScript : MonoBehaviour
     public string fishTag; // Tag to identify fish objects
     public ParticleSystem feedbackParticles; // Particle system for feedback
     public GameObject cashHandlerParent; // Parent object handling cash
-    public GameObject caughtcanvas; // UI canvas to display on fish caught
+
 
     public float moveUpDistance = 100f; // Distance to move the canvas up
     public float moveUpDuration = 1f; // Duration for moving the canvas up
@@ -16,11 +16,7 @@ public class BucketScript : MonoBehaviour
 
     private void Start()
     {
-        // Ensure the caughtcanvas starts inactive
-        if (caughtcanvas != null)
-        {
-            caughtcanvas.SetActive(false);
-        }
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -28,8 +24,7 @@ public class BucketScript : MonoBehaviour
         // Check if the colliding object is a fish
         if (collision.gameObject.tag == fishTag)
         {
-            caughtcanvas.SetActive(true); // Activate the canvas
-            StartCoroutine(MoveCaughtCanvasUp()); // Start moving the canvas up
+
 
             print("Fish caught!");
 
@@ -82,50 +77,4 @@ public class BucketScript : MonoBehaviour
         }
     }
 
-    private IEnumerator MoveCaughtCanvasUp()
-    {
-        RectTransform canvasRectTransform = caughtcanvas.GetComponent<RectTransform>();
-        if (canvasRectTransform == null)
-        {
-            Debug.LogError("Caughtcanvas is not a UI element with a RectTransform.");
-            yield break;
-        }
-
-        Vector3 startPosition = canvasRectTransform.anchoredPosition;
-        Vector3 targetPosition = startPosition + new Vector3(0, moveUpDistance, 0);
-
-        float elapsedTime = 0f;
-
-        // Smoothly move the canvas up
-        while (elapsedTime < moveUpDuration)
-        {
-            elapsedTime += Time.deltaTime;
-            float t = Mathf.SmoothStep(0, 1, elapsedTime / moveUpDuration);
-            canvasRectTransform.anchoredPosition = Vector3.Lerp(startPosition, targetPosition, t);
-            yield return null;
-        }
-
-        // Ensure the final position is exactly at the target
-        canvasRectTransform.anchoredPosition = targetPosition;
-
-        // Wait for the reset delay before resetting the canvas
-        yield return new WaitForSeconds(resetDelay);
-
-        StartCoroutine(ResetCaughtCanvas(startPosition));
-    }
-
-
-    private IEnumerator ResetCaughtCanvas(Vector3 originalPosition)
-    {
-        yield return new WaitForSeconds(resetDelay);
-
-        RectTransform canvasRectTransform = caughtcanvas.GetComponent<RectTransform>();
-        if (canvasRectTransform != null)
-        {
-            canvasRectTransform.anchoredPosition = originalPosition;
-        }
-
-        // Deactivate the canvas
-        caughtcanvas.SetActive(false);
-    }
 }
