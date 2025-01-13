@@ -185,6 +185,7 @@ GameObject:
   - component: {fileID: -8679921383154817045}
   - component: {fileID: -5754084199372789682}
   - component: {fileID: -7511558181221131132}
+  - component: {fileID: 4794333757269389613}
   m_Layer: 0
   m_Name: Danger_Sign
   m_TagString: Untagged
@@ -257,6 +258,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4794333757269389613
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149155446097}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.29294297, y: 1.5182117, z: 0.08637729}
+  m_Center: {x: 0.000015258789, y: 0.7585284, z: 0.00041350164}
 --- !u!1 &1061048239353884857
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,8 +593,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0470903, y: 1.4664229, z: 3.0413404}
-  m_Center: {x: 0, y: -0.7018005, z: 0}
+  m_Size: {x: 3.0042462, y: 1.7942182, z: 10.392958}
+  m_Center: {x: -0.0103315115, y: -0.5379029, z: -1.8298635}
 --- !u!1 &1918475758166910495
 GameObject:
   m_ObjectHideFlags: 0
@@ -1066,6 +1088,9 @@ GameObject:
   - component: {fileID: 8794940163313351984}
   - component: {fileID: 1141398743365082837}
   - component: {fileID: 3356794303030518107}
+  - component: {fileID: 4509225298501226379}
+  - component: {fileID: 378469636755333262}
+  - component: {fileID: 19157840525638368}
   m_Layer: 0
   m_Name: FishShop_Pier
   m_TagString: Untagged
@@ -1138,6 +1163,69 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4509225298501226379
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4601981247675093550}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.0139098, y: 2.5923228, z: 9.617642}
+  m_Center: {x: 0.032234482, y: -0.6958926, z: 1.3898283}
+--- !u!65 &378469636755333262
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4601981247675093550}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10.024022, y: 2.588583, z: 3.0017533}
+  m_Center: {x: -0.06823218, y: -0.6977625, z: -1.9181275}
+--- !u!65 &19157840525638368
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4601981247675093550}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.1384642, y: 7.4771137, z: 5.020695}
+  m_Center: {x: -2.8654943, y: 1.7465029, z: 1.9844687}
 --- !u!1 &4625572802669188994
 GameObject:
   m_ObjectHideFlags: 0
@@ -1324,8 +1412,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0470903, y: 1.4664229, z: 3.0413404}
-  m_Center: {x: 0, y: -0.7018005, z: 0}
+  m_Size: {x: 3.039234, y: 1.7782412, z: 9.951805}
+  m_Center: {x: -0.011289852, y: -0.5458913, z: -1.6709231}
 --- !u!1 &5305873438740336782
 GameObject:
   m_ObjectHideFlags: 0
@@ -1753,6 +1841,7 @@ GameObject:
   - component: {fileID: 4251970978713106411}
   - component: {fileID: 2906928288104648332}
   - component: {fileID: 3722878433335769451}
+  - component: {fileID: 6210923170125544751}
   m_Layer: 0
   m_Name: Shop_Sign
   m_TagString: Untagged
@@ -1825,3 +1914,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6210923170125544751
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8710679983592573220}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.04990722, y: 0.44640827, z: 0.69561785}
+  m_Center: {x: -1.22004, y: 2.304266, z: 3.3803833}
