@@ -4600,7 +4600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1451e29180df2f24baff1ff595461c82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rodToBuy: {fileID: 1004028959}
+  rodToBuy: {fileID: 681499729444882095}
   price: 5000
   cashHandlerParent: {fileID: 1402408364}
   buytext: {fileID: 84940670}
@@ -8862,11 +8862,6 @@ CanvasRenderer:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5790362245941073629, guid: 753505d367f39d04c8ef944e9491a149, type: 3}
   m_PrefabInstance: {fileID: 4029767096739082718}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1004028959 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8109391503549705578, guid: 718a1a4312558b2418496f249df572bf, type: 3}
-  m_PrefabInstance: {fileID: 4202869937014898031}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1005036157
 GameObject:
@@ -14510,6 +14505,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 761485568656363209, guid: a7fac9b67fcb9cd4588a2b904449fd50, type: 3}
+      propertyPath: m_TagString
+      value: Land
+      objectReference: {fileID: 0}
     - target: {fileID: 1203057529651177748, guid: a7fac9b67fcb9cd4588a2b904449fd50, type: 3}
       propertyPath: m_TagString
       value: Untagged
@@ -15614,7 +15613,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 3.765254e-39, y: 6e-44, z: 1.7e-44, w: 6.11e-43}
+  m_BoundingSphereOverride: {x: 1.285697e-39, y: 9.1835e-41, z: 1.1e-44, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -18406,7 +18405,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4027937088547628129, guid: 4e206e7b1df4f1543a2a13f3f188fb69, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.79
+      value: -18.97
       objectReference: {fileID: 0}
     - target: {fileID: 4027937088547628129, guid: 4e206e7b1df4f1543a2a13f3f188fb69, type: 3}
       propertyPath: m_LocalPosition.z
@@ -18480,6 +18479,10 @@ PrefabInstance:
       propertyPath: escapeCounter
       value: 
       objectReference: {fileID: 2089202552}
+    - target: {fileID: 5415405314331820949, guid: 4e206e7b1df4f1543a2a13f3f188fb69, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5744242479903780080, guid: 4e206e7b1df4f1543a2a13f3f188fb69, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -18493,6 +18496,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e206e7b1df4f1543a2a13f3f188fb69, type: 3}
+--- !u!1 &681499729444882095 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4372374960982785755, guid: 4e206e7b1df4f1543a2a13f3f188fb69, type: 3}
+  m_PrefabInstance: {fileID: 681499729444882094}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &809155337852496227
 PrefabInstance:
   m_ObjectHideFlags: 0
